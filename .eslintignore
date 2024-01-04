@@ -1,0 +1,8 @@
+dist
+build
+coverage
+node_modules
+.env*
+!.env.example
+*.js
+pnpm-lock.yaml
