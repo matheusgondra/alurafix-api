@@ -27,4 +27,8 @@ export class VideoRepository {
 		const videoUpdated = await this.prisma.video.update({ where: { id }, data: updateVideoDTO });
 		return videoUpdated;
 	}
+
+	async delete(id: string): Promise<VideoEntity> {
+		return await this.prisma.video.delete({ where: { id } });
+	}
 }
