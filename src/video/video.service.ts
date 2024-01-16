@@ -29,4 +29,9 @@ export class VideoService {
 		await this.findById(id);
 		return await this.videoRepository.update(id, updateVideoDTO);
 	}
+
+	async delete(id: string): Promise<VideoEntity> {
+		await this.findById(id);
+		return await this.videoRepository.delete(id);
+	}
 }
