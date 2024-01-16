@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { PrismaService } from "src/prisma/prisma.service";
 import { CreateVideoDTO } from "../dtos/create-video.dto";
 import { VideoEntity } from "../entities/video.entity";
+import { UpdateVideoDTO } from "../dtos/update-video-dto";
 
 @Injectable()
 export class VideoRepository {
@@ -20,5 +21,10 @@ export class VideoRepository {
 	async findById(id: string): Promise<VideoEntity> {
 		const video = await this.prisma.video.findUnique({ where: { id } });
 		return video;
+	}
+
+	async update(id: string, updateVideoDTO: UpdateVideoDTO): Promise<VideoEntity> {
+		const videoUpdated = await this.prisma.video.update({ where: { id }, data: updateVideoDTO });
+		return videoUpdated;
 	}
 }
