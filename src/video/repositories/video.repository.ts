@@ -16,4 +16,9 @@ export class VideoRepository {
 		const videos = await this.prisma.video.findMany();
 		return videos;
 	}
+
+	async findById(id: string): Promise<VideoEntity> {
+		const video = await this.prisma.video.findUnique({ where: { id } });
+		return video;
+	}
 }
