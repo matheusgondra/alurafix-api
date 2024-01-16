@@ -21,7 +21,7 @@ export class VideoService {
 		if (!video) {
 			throw new NotFoundException("Video not found");
 		}
-		
+
 		return video;
 	}
 

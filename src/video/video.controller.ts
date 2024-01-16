@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Patch, Post } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Patch, Post } from "@nestjs/common";
 import { VideoService } from "./video.service";
 import { CreateVideoDTO } from "./dtos/create-video.dto";
 import { VideoEntity } from "./entities/video.entity";
@@ -26,5 +26,10 @@ export class VideoController {
 	@Patch(":id")
 	async update(@Param("id") id: string, @Body() updateVideoDTO: UpdateVideoDTO): Promise<VideoEntity> {
 		return await this.videoService.update(id, updateVideoDTO);
+	}
+
+	@Delete(":id")
+	async delete(@Param("id") id: string): Promise<VideoEntity> {
+		return await this.videoService.delete(id);
 	}
 }
