@@ -10,4 +10,8 @@ export class VideoService {
 	async create(createVideoDTO: CreateVideoDTO): Promise<VideoEntity> {
 		return await this.videoRepository.create(createVideoDTO);
 	}
+
+	async findAll(): Promise<VideoEntity[]> {
+		return await this.videoRepository.findAll();
+	}
 }
