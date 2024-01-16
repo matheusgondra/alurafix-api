@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post } from "@nestjs/common";
 import { VideoService } from "./video.service";
 import { CreateVideoDTO } from "./dtos/create-video.dto";
 import { VideoEntity } from "./entities/video.entity";
@@ -15,5 +15,10 @@ export class VideoController {
 	@Get()
 	async findAll(): Promise<VideoEntity[]> {
 		return await this.videoService.findAll();
+	}
+
+	@Get(":id")
+	async findById(@Param("id") id: string): Promise<VideoEntity> {
+		return await this.videoService.findById(id);
 	}
 }
