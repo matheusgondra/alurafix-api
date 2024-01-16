@@ -11,4 +11,9 @@ export class VideoRepository {
 		const videoCreated = await this.prisma.video.create({ data: createVideoDTO });
 		return videoCreated;
 	}
+
+	async findAll(): Promise<VideoEntity[]> {
+		const videos = await this.prisma.video.findMany();
+		return videos;
+	}
 }
