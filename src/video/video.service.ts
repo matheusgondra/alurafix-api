@@ -2,6 +2,7 @@ import { Injectable, NotFoundException } from "@nestjs/common";
 import { VideoRepository } from "./repositories/video.repository";
 import { CreateVideoDTO } from "./dtos/create-video.dto";
 import { VideoEntity } from "./entities/video.entity";
+import { UpdateVideoDTO } from "./dtos/update-video-dto";
 
 @Injectable()
 export class VideoService {
@@ -22,5 +23,10 @@ export class VideoService {
 		}
 		
 		return video;
+	}
+
+	async update(id: string, updateVideoDTO: UpdateVideoDTO): Promise<VideoEntity> {
+		await this.findById(id);
+		return await this.videoRepository.update(id, updateVideoDTO);
 	}
 }
