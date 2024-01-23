@@ -46,4 +46,9 @@ describe("VideoRepository", () => {
 		const video = await videoRepository.create(createVideoDTO);
 		expect(video).toEqual(videoEntityMock);
 	});
+
+	it("Should find all videos", async () => {
+		const videos = await videoRepository.findAll();
+		expect(videos).toEqual([videoEntityMock]);
+	});
 });
