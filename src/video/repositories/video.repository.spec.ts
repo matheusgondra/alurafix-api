@@ -56,4 +56,9 @@ describe("VideoRepository", () => {
 		const video = await videoRepository.findById("any_id");
 		expect(video).toEqual(videoEntityMock);
 	});
+
+	it("Should update a video", async () => {
+		const video = await videoRepository.update("any_id", videoEntityMock);
+		expect(video).toEqual(videoEntityMock);
+	});
 });
