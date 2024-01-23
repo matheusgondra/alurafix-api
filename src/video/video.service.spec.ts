@@ -3,6 +3,7 @@ import { VideoEntity } from "./entities/video.entity";
 import { VideoRepository } from "./repositories/video.repository";
 import { VideoService } from "./video.service";
 import { CreateVideoDTO } from "./dtos/create-video.dto";
+import { UpdateVideoDTO } from "./dtos/update-video-dto";
 
 describe("VideoService", () => {
 	let service: VideoService;
@@ -54,6 +55,16 @@ describe("VideoService", () => {
 
 	it("Should find a video by id", async () => {
 		const video = await service.findById("any_id");
+		expect(video).toEqual(videoEntityMock);
+	});
+
+	it("Should update a video", async () => {
+		const updateVideoDTO: UpdateVideoDTO = {
+			title: "other_title",
+			description: "other_description",
+			url: "other_url"
+		};
+		const video = await service.update("any_id", updateVideoDTO);
 		expect(video).toEqual(videoEntityMock);
 	});
 });
