@@ -67,4 +67,9 @@ describe("VideoService", () => {
 		const video = await service.update("any_id", updateVideoDTO);
 		expect(video).toEqual(videoEntityMock);
 	});
+
+	it("Should delete a video", async () => {
+		const video = await service.delete("any_id");
+		expect(video).toEqual(videoEntityMock);
+	});
 });
