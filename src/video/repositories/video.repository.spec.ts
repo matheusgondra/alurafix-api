@@ -16,7 +16,7 @@ describe("VideoRepository", () => {
 		video: {
 			create: jest.fn().mockResolvedValue(videoEntityMock),
 			findMany: jest.fn().mockResolvedValue([videoEntityMock]),
-			findById: jest.fn().mockResolvedValue(videoEntityMock),
+			findUnique: jest.fn().mockResolvedValue(videoEntityMock),
 			update: jest.fn().mockResolvedValue(videoEntityMock),
 			delete: jest.fn().mockResolvedValue(videoEntityMock)
 		}
@@ -50,5 +50,10 @@ describe("VideoRepository", () => {
 	it("Should find all videos", async () => {
 		const videos = await videoRepository.findAll();
 		expect(videos).toEqual([videoEntityMock]);
+	});
+
+	it("Should find a video by id", async () => {
+		const video = await videoRepository.findById("any_id");
+		expect(video).toEqual(videoEntityMock);
 	});
 });
