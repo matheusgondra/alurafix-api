@@ -61,4 +61,9 @@ describe("VideoRepository", () => {
 		const video = await videoRepository.update("any_id", videoEntityMock);
 		expect(video).toEqual(videoEntityMock);
 	});
+
+	it("Should delete a video", async () => {
+		const video = await videoRepository.delete("any_id");
+		expect(video).toEqual(videoEntityMock);
+	});
 });
