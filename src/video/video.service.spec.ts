@@ -9,6 +9,12 @@ describe("VideoService", () => {
 	let videoEntityMock: VideoEntity;
 
 	beforeEach(async () => {
+		videoEntityMock = {
+			id: "any_id",
+			title: "any_title",
+			description: "any_description",
+			url: "http://anyurl.com"
+		}
 		const repositoryMock = {
 			create: jest.fn().mockResolvedValue(Promise.resolve(videoEntityMock)),
 			findAll: jest.fn().mockResolvedValue(Promise.resolve([videoEntityMock])),
@@ -44,5 +50,10 @@ describe("VideoService", () => {
 	it("Should find all videos", async () => {
 		const videos = await service.findAll();
 		expect(videos).toEqual([videoEntityMock]);
+	});
+
+	it("Should find a video by id", async () => {
+		const video = await service.findById("any_id");
+		expect(video).toEqual(videoEntityMock);
 	});
 });
