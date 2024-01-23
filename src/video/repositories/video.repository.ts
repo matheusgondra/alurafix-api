@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { PrismaService } from "src/prisma/prisma.service";
+import { PrismaService } from "../../prisma/prisma.service";
 import { CreateVideoDTO } from "../dtos/create-video.dto";
 import { VideoEntity } from "../entities/video.entity";
 import { UpdateVideoDTO } from "../dtos/update-video-dto";
