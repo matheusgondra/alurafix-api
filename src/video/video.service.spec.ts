@@ -40,4 +40,9 @@ describe("VideoService", () => {
 		const video = await service.create(createVideoDTO);
 		expect(video).toEqual(videoEntityMock);
 	});
+
+	it("Should find all videos", async () => {
+		const videos = await service.findAll();
+		expect(videos).toEqual([videoEntityMock]);
+	});
 });
