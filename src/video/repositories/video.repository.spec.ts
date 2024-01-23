@@ -2,6 +2,7 @@ import { Test, TestingModule } from "@nestjs/testing";
 import { VideoEntity } from "../entities/video.entity";
 import { VideoRepository } from "./video.repository";
 import { PrismaService } from "../../prisma/prisma.service";
+import { CreateVideoDTO } from "../dtos/create-video.dto";
 
 describe("VideoRepository", () => {
 	let videoRepository: VideoRepository;
@@ -34,5 +35,15 @@ describe("VideoRepository", () => {
 
 	it("Should be defined", () => {
 		expect(videoRepository).toBeDefined();
+	});
+
+	it("Should create a video", async () => {
+		const createVideoDTO: CreateVideoDTO = {
+			title: "any_title",
+			description: "any_description",
+			url: "any_url"
+		};
+		const video = await videoRepository.create(createVideoDTO);
+		expect(video).toEqual(videoEntityMock);
 	});
 });
