@@ -1,9 +1,9 @@
 import { Test, TestingModule } from "@nestjs/testing";
-import { VideoEntity } from "./entities/video.entity";
-import { VideoRepository } from "./repositories/video.repository";
-import { VideoService } from "./video.service";
-import { CreateVideoDTO } from "./dtos/create-video.dto";
-import { UpdateVideoDTO } from "./dtos/update-video-dto";
+import { VideoEntity } from "../../../src/video/entities/video.entity";
+import { VideoRepository } from "../../../src/video/repositories/video.repository";
+import { VideoService } from "../../../src/video/video.service";
+import { CreateVideoDTO } from "../../../src/video/dtos/create-video.dto";
+import { UpdateVideoDTO } from "../../../src/video/dtos/update-video-dto";
 
 describe("VideoService", () => {
 	let service: VideoService;

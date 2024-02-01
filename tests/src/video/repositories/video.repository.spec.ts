@@ -1,8 +1,8 @@
 import { Test, TestingModule } from "@nestjs/testing";
-import { VideoEntity } from "../entities/video.entity";
-import { VideoRepository } from "./video.repository";
-import { PrismaService } from "../../prisma/prisma.service";
-import { CreateVideoDTO } from "../dtos/create-video.dto";
+import { VideoEntity } from "../../../../src/video/entities/video.entity";
+import { VideoRepository } from "../../../../src/video/repositories/video.repository";
+import { PrismaService } from "../../../../src/prisma/prisma.service";
+import { CreateVideoDTO } from "../../../../src/video/dtos/create-video.dto";
 
 describe("VideoRepository", () => {
 	let videoRepository: VideoRepository;
