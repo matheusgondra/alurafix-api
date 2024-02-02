@@ -59,4 +59,26 @@ describe("VideoController", () => {
 			}
 		]);
 	});
+
+	it("Should find a video by id", async () => {
+		const appServer = app.getHttpServer();
+		const video = await request(appServer)
+			.post("/videos")
+			.send({
+				title: "any_title",
+				description: "any_description",
+				url: "http://anyurl.com"
+			});
+
+		const response = await request(appServer)
+			.get(`/videos/${video.body.id}`)
+			.expect(200);
+
+		expect(response.body).toEqual({
+			id: video.body.id,
+			title: "any_title",
+			description: "any_description",
+			url: "http://anyurl.com"
+		});
+	});
 });
