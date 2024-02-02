@@ -81,4 +81,31 @@ describe("VideoController", () => {
 			url: "http://anyurl.com"
 		});
 	});
+
+	it("Should update a video", async () => {
+		const appServer = app.getHttpServer();
+		const video = await request(appServer)
+			.post("/videos")
+			.send({
+				title: "any_title",
+				description: "any_description",
+				url: "http://anyurl.com"
+			});
+
+		const videoUpdated = await request(appServer)
+			.patch(`/videos/${video.body.id}`)
+			.send({
+				title: "other_title",
+				description: "other_description",
+				url: "http://otherurl.com"
+			})
+			.expect(200);
+
+		expect(videoUpdated.body).toEqual({
+			id: video.body.id,
+			title: "other_title",
+			description: "other_description",
+			url: "http://otherurl.com"
+		});
+	});
 });
