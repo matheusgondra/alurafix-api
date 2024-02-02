@@ -108,4 +108,26 @@ describe("VideoController", () => {
 			url: "http://otherurl.com"
 		});
 	});
+
+	it("Should delete a video", async () => {
+		const appServer = app.getHttpServer();
+		const video = await request(appServer)
+			.post("/videos")
+			.send({
+				title: "any_title",
+				description: "any_description",
+				url: "http://anyurl.com"
+			});
+
+		const response = await request(appServer)
+			.delete(`/videos/${video.body.id}`)
+			.expect(200);
+
+		expect(response.body).toEqual({
+			id: video.body.id,
+			title: "any_title",
+			description: "any_description",
+			url: "http://anyurl.com"
+		});
+	});
 });
