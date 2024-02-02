@@ -35,4 +35,28 @@ describe("VideoController", () => {
 			})
 			.expect(201);
 	});
+
+	it("Should find all videos", async () => {
+		const appServer = app.getHttpServer();
+		await request(appServer)
+			.post("/videos")
+			.send({
+				title: "any_title",
+				description: "any_description",
+				url: "http://anyurl.com"
+			});
+		
+		const response = await request(appServer)
+			.get("/videos")
+			.expect(200);
+		
+		expect(response.body).toEqual([
+			{
+				id: expect.any(String),
+				title: "any_title",
+				description: "any_description",
+				url: "http://anyurl.com"
+			}
+		]);
+	});
 });
